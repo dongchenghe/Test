@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name="dba" namespace="/" extends="struts-default">
+		<action name = "dbaGoodsAction" class="managerGoodsAction" >
+			<result name = "success" type="dispatcher">/dba/goodInfo.jsp</result>
+		</action>
+	</package>
+	<package name="dbajson" namespace="/" extends="json-default">
+		<action name = "dbaGetGoodsAction" class="managerGoodsAction" method="getGoods" >
+			<result type="json"></result>
+		</action>
+		<action name = "dbaMenuAction" class="com.etc.action.MenuAction" >
+			<result type="json"></result>
+		</action>
+		<action name = "dbaOderAction" class="orderAction" >
+			<result type="json"></result>
+		</action>
+	</package>
+</struts>

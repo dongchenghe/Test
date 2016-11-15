@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<constant name="struts.devMode" value="true"></constant>
+	<constant name="struts.objectFactory" value="spring"></constant>
+	<constant name="struts.action.extension" value="action,,do,go"></constant>
+	<constant name="struts.configuration.xml.reload" value="true"></constant>
+	<constant name="struts.enable.DynamicMethodInvocation" value="true"></constant>
+	<constant name="struts.multipart.maxSize" value="20971520"></constant>
+	<constant name="struts.ui.theme" value="simple"></constant>
+	<package name="index" namespace="/" extends="struts-default">
+		<action name = "indexAction" class="com.etc.action.IndexAction">
+			<result name = "success" type="dispatcher">/index.jsp</result>
+		</action>
+	</package>
+	<include file="com/etc/action/userstruts.xml"></include>
+	<include file="com/etc/action/dbastruts.xml"></include>
+<!-- 	<include file="com/action/secondstruts.xml"></include>
+	<include file="com/action2/tablestruts.xml"></include>
+	<include file="com/action2/action2struts.xml"></include>
+	<include file="com/day3/day3struts.xml"></include>
+	<include file="com/day4/day4struts.xml"></include>
+	<include file="com/day5/day5struts.xml"></include> -->
+</struts>

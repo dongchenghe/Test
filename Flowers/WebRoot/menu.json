@@ -1,0 +1,9 @@
+[{
+	"id":100,
+	"text":"订单管理",
+	"children":[{"id":101,"text":"未发订单","href1":"demo1.jsp"},{"id":102,"text":"已发货订单","href1":"demo2.jsp"}]
+},{
+	"id":200,
+	"text":"商品管理",
+	"children":[{"id":201,"text":"全部商品","href1":"demo3.jsp"},{"id":202,"text":"缺货商品","href1":"demo4.jsp"}]
+}]

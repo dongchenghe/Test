@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context ="http://www.springframework.org/schema/context" 
+    xmlns:aop="http://www.springframework.org/schema/aop" 
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans 
+        http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-2.5.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd" >
+        <context:property-placeholder location="classpath:config.properties"/>
+        <bean id="managerService" class="com.etc.service.ManagerService">
+        	<property name="dao" ref="managerDao"></property>
+        </bean>
+        <bean id="goodsService" class="com.etc.service.GoodsService">
+        	<property name="gd" ref="goodsDao"></property>
+        </bean>
+        <bean id="managerOrderService" class="com.etc.service.ManageOrdersService">
+        	<property name="dao" ref="orderDao"></property>
+        </bean>
+        <bean id="loginAction" class="com.etc.action.LoginAction">
+        	<property name="service" ref="managerService"></property>
+        </bean>
+        <bean id="managerGoodsAction" class="com.etc.action.ManagerGoodsAction">
+        	<property name="gds" ref="goodsService"></property>
+        </bean>
+        <bean id="orderAction" class="com.etc.action.OrderAction">
+        	<property name="mod" ref="managerOrderService"></property>
+        </bean>
+        <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+            	<property name="driverClassName" value="${driver}" />
+				<property name="url" value="${url}" />
+				<property name="username" value="${username}" />
+				<property name="password" value="${password}" />
+        </bean>
+        
+        <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+            <property name="dataSource" ref="dataSource"></property>
+            <property name="configLocation" value="classpath:dbconf.xml"></property>
+        </bean>
+        <bean id="orderDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+            <property name="mapperInterface" value="com.etc.dao.IOrderDao"></property>
+            <property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+        </bean>
+        <bean id="managerDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+            <property name="mapperInterface" value="com.etc.dao.IManagerDao"></property>
+            <property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+        </bean>
+        <bean id="goodsDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+            <property name="mapperInterface" value="com.etc.dao.IGoodsDao"></property>
+            <property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+        </bean>
+</beans>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.etc.dao.IManagerDao">
+     <resultMap type="Manager" id="managerMap">
+        <result column="dba_id" property="dba_id"/>
+        <result column="dba_name" property="dba_name"/>
+        <result column="dba_pwd" property="dba_pwd"/>
+     </resultMap>
+     <select id="managerLogin" parameterType="String" resultMap="managerMap">
+     	select * from dba where dba_name = #{dba_name};
+     </select>
+  </mapper>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<properties resource="config.properties">
+	</properties>
+	<typeAliases>
+	   <typeAlias type="com.etc.mode.Goods" alias="Goods" />
+	   <typeAlias type="com.etc.mode.Manager" alias="Manager" />
+	   <typeAlias type="com.etc.mode.User" alias="User" />
+	   <typeAlias type="com.etc.mode.Order" alias="Order" />
+	   <typeAlias type="com.etc.mode.Menu" alias="Menu" />
+	</typeAliases>
+	<mappers>  
+	    <mapper resource="com/etc/mapper/userMapper.xml" />
+	    <mapper resource="com/etc/mapper/menuMapper.xml" />
+	    <mapper resource="com/etc/mapper/orderMapper.xml" />
+	    <mapper resource="com/etc/mapper/managerMapper.xml" />
+	</mappers>
+</configuration>

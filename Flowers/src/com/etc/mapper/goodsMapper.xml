@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.etc.dao.IGoodsDao">
+     <resultMap type="Goods" id="goodsMap">
+     	<result column="goods_id" property="goods_id"/>
+        <result column="goods_name" property="name"/>
+        <result column="goods_type" property="type"/>
+        <result column="goods_details" property="details"/>
+        <result column="goods_price" property="price"/>
+        <result column="goods_old_price" property="goods_old_price"/>
+        <result column="goods_store_amount" property="store_amount"/>
+        <result column="goods_sales" property="sales"/>
+        <result column="goods_state" property="state"/>
+        <result column="img1_src" property="img1_src"/>
+        <result column="img2_src" property="img2_src"/>
+        <result column="img3_src" property="img3_src"/>
+        <result column="img4_src" property="img4_src"/>
+     </resultMap>
+     <select id="getGoods" parameterType="int" resultMap="goodsMap">
+     	SELECT * FROM goods WHERE goods_id =#{id}
+     </select>
+     <select id="getLessGoods" resultMap="goodsMap">
+     	select * from goods where goods_store_amount &lt;=30
+     </select>
+     <select id="getSearchGoods" parameterType="String" resultMap="goodsMap">
+     	SELECT * FROM goods WHERE goods_id =#{str}
+     </select>
+     <select id="getAllGoods" resultMap="goodsMap">
+     	select * from goods
+     </select>
+     <update id="updateGoods" parameterMap="goodsMap">
+     	update goods set goods_name =#{name},goods_type =#{type},goods_details=#{details},goods_old_price=#{goods_old_price},goods_price=#{price},
+     	goods_store_amount=#{store_amount},goods_state=#{state}'where goods_id = #{goods_id};
+     </update>
+  </mapper>

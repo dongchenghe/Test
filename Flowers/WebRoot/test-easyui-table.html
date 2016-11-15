@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="css/easyui.css">
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="js/easyui-lang-zh_CN.js"></script>
+</head>
+<body>
+	<a href="javascript:void(0)" onclick="queryData()" class="easyui-linkbutton">检索商品</a>
+	<a href="javascript:void(0)" onclick="deleteRow()" class="easyui-linkbutton">删除</a>
+	<table id="dg" class="easyui-datagrid" title="产品列表" 
+	style="width:1000px;height:300px" data-options="pagination:true" toolbar="#toolbar">
+		
+		
+	</table>
+	<!-- 定义工具条的按钮 -->
+	<div id="toolbar">
+		<a href="javascript:void(0)" class="easyui-linkbutton" onclick="addProduct()">增加商品</a>
+		<a href="javascript:void(0)" class="easyui-linkbutton" onclick="updateProduct()">修改商品</a>
+		<a href="javascript:void(0)" class="easyui-linkbutton" onclick="removeProduct()">删除商品</a>
+	</div>
+	<!-- 定义对话框中的按钮 -->
+	<div id="mybuttons">
+		<a href="javascript:void(0)" class="easyui-linkbutton" style="width:100px" onclick="">保存</a>
+		<a href="javascript:void(0)" class="easyui-linkbutton" style="width:100px" onclick="$('#dlg').dialog('close')">取消</a>
+	</div>
+	
+	
+	<div id="dlg" class="easyui-dialog" style="width:500px; height:200px" title="商品编辑" buttons="#mybuttons">
+		<form id="frm">
+			<table>
+				<tr>
+					<td>商品编号:</td>
+					<td><input name="productid" class="easyui-textbox"></td>
+				</tr>
+				<tr>
+					<td>商品名称:</td>
+					<td><input name="productname" class="easyui-textbox"></td>
+				</tr>
+				<tr>
+					<td>商品单价:</td>
+					<td><input name="unitcost" class="easyui-textbox"></td>
+				</tr>
+			</table>
+		</form>
+	</div>
+	
+	<script type="text/javascript">
+	
+		$(function(){
+			
+			$("#dlg").dialog("close"); //默认让对话框隐藏
+			
+		});
+		
+		function addProduct() {
+			$("#dlg").dialog("open");
+		}
+		
+		function updateProduct() {
+			var row = $("#dg").datagrid("getSelected"); //获取选中行数据
+			if(row) {
+				$("#frm").form("clear");
+				$("#frm").form("load", row); //将行数据加载到表单的每一个input元素中(要求是input元素的名称必须和row对象的属性相同)
+				$("#dlg").dialog("open");
+				
+			}
+		}
+	
+		function deleteRow() {
+			
+			/* var rows = $("#dg").datagrid("getSelections");
+			if( rows ) {
+				 alert( rows[0].productid);
+			} */
+			
+			/* 获取选中的行 */
+			var row = $("#dg").datagrid("getSelected");
+			
+			if(row) {
+				$.messager.confirm("确认删除","是否删除?",function(r) {
+					//使用ajax将数据通过请求服务器删除数据
+					if(r) {
+						
+					}
+				} );
+			}
+		}
+	
+		function queryData() {
+			var n = 1;
+			$("#dg").datagrid( { 
+				singleSelect:true,
+				url:'/myproject/dataserver',
+				rowStyler: function(index,row) {
+					if(row.listprice>80) {
+						return 'background-color:red;color:#fff;';
+					}
+				},
+				onDblClickRow: function(index,row) {
+					alert(row.test);
+				},
+				columns:[[
+				          	{field:'id',width:50,formatter:function() {
+				        		return n++;
+				        	} },
+				        	{field:'productid',width:100,title:'商品编号'},
+				        	{field:'productname',width:100,title:'商品名称'},
+				        	{field:'unitcost',width:100,title:'单位价格'},
+				        	{field:'test',width:100,title:'测试列',formatter:function(value,row,index) {
+				        	    
+				        		if(index%2==0) {
+				        			return "否";	
+				        		}
+				        		return "是";
+				        	} },
+				        	{field:'listprice',width:100,title:'价格',styler:function(value,row,index) {
+				        		return 'background-color:#ffee00;color:red;';
+				        	},formatter:function(value,row,index) {
+				        		return "￥"+value;
+				        	} }
+				        ]]
+				
+				} );
+			
+		}
+		
+	
+	</script>
+</body>
+</html>
