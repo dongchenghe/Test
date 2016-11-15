@@ -10,6 +10,4 @@ public interface IitemService {
 	List<Film> getFilmAll();
 	List<Film> getFilmSoon();
 	List<Cinema> getCinema();
-	
-
 }
