@@ -6,5 +6,7 @@ public class tesat {
 	public void name() {
 		System.out.println();
 	}
-
+	public void name11() {
+		System.out.println();
+	}
 }
