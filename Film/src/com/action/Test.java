@@ -9,5 +9,7 @@ public class Test {
 	public void say() {
 		System.out.println("呵呵");
 	}
-
+	public void I_am_a_Bug() {
+		System.out.println("Bug");
+	}
 }
