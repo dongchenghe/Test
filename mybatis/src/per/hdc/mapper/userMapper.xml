@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 为这个mapper指定一个唯一的namespace，namespace的值习惯上设置成包名+sql映射文件名，这样就能够保证namespace的值是唯一的
+例如namespace="com.chinasofti.mapping.usersMapper"就是com.chinasofti.mapping(包名)+usersMapper(usersMapper.xml文件去除后缀)
+-->
+  <mapper namespace="per.hdc.dao.InterfaceUserDao">
+      <!-- 在select标签中编写查询的SQL语句， 设置select标签的id属性为getUser，id属性值必须是唯一的，不能够重复
+      使用parameterType属性指明查询时使用的参数类型，resultType属性指明查询返回的结果集类型
+     resultType="com.chinasofti.model.Users"就表示将查询结果封装成一个Users类的对象返回
+     Users类就是users表所对应的实体类
+     -->
+     <resultMap type="Use" id="users">
+     	<result column="id" property="use_id"/>
+     	<result column="name" property="use_name"/>
+     	<result column="pwd" property="use_pwd"/>
+     	<association property="user_r" javaType="Role" resultMap="rolemap">
+     	</association>
+     </resultMap>
+     <resultMap type="Role" id="rolemap">
+     	<result column="rid" property="rid"/>
+     	<result column="rname" property="rname"/>
+     </resultMap>
+     <!-- 根据id查询得到一个user对象-->
+     <select id="getUser" parameterType="String" 
+         resultType="User">
+         select * from user where user_id=#{id}
+     </select>
+     <select id="likeUser" parameterType="String" resultType="User">
+     	select * from user where user_name like #{name}
+     </select>
+     <delete id="deletUser" parameterType="String">
+     	DELETE FROM user WHERE user_id = #{id}
+     </delete>
+     <update id="updateUser" parameterType="Map" >
+     	UPDATE user SET user_name = #{user.user_name} WHERE user_id = #{id} ; 
+     </update>
+     <insert id="insertUser" parameterType="User" >
+     	INSERT Into user (user_id,user_name,user_pwd,user_phone) VALUES(#{user_id},#{user_name},#{user_pwd},#{user_phone});
+     </insert>
+     <select id="selectRUser" parameterType="String" resultMap="users" >
+     	SELECT t1.`id`,t1.`name`,t1.`pwd`,t2.`rname` FROM jquser t1,jqrole t2 WHERE t1.`roid`=t2.`rid` AND t1.`id`= #{id};
+     </select>
+     <select id="queryDy" parameterType="User" resultType="User">
+     	select * from user
+     	<trim prefixOverrides="and|or" prefix="where">
+     		<if test="user_id">and user_id = #{user_id}</if>
+     		<if test="user_name">and user_name = #{user_name}</if>
+     		<if test="user_pwd">and user_pwd = #{user_pwd}</if>
+     		<if test="user_sex">and user_sex = #{user_sex}</if>
+     	</trim>
+     </select>
+     <select id="queryDyArry" resultType="User">
+     	select * from user where user_id in
+     	<foreach collection="array" open="(" close=")" item="item" separator=",">
+     		#{item}
+     	</foreach>
+     </select>
+     <select id="queryDyMap" resultType="User">
+     	select * from user where user_id in
+     	<foreach collection="abc" open="(" close=")" item="item" separator=",">
+     		#{item}
+     	</foreach>
+     </select>
+ </mapper>
