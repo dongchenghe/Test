@@ -189,13 +189,69 @@
 				columns : [ [ //二维数组，2个中括号
 					{
 						field : 'jobId',
-						width : 140,
+						width : 70,
 						title : '职位编号'
 					}, {
 						field : 'jobName',
-						width : 140,
+						width : 70,
 						title : '职位名称'
-					},
+					},{
+						field : 'jobId',
+						width : 70,
+						title : '职位编号'
+					}, {
+						field : 'jobName',
+						width : 70,
+						title : '职位名称'
+					},{
+						field : 'jobId',
+						width : 70,
+						title : '职位编号'
+					}, {
+						field : 'jobName',
+						width : 70,
+						title : '职位名称'
+					},{
+						field : 'jobId',
+						width : 70,
+						title : '职位编号'
+					}, {
+						field : 'jobName',
+						width : 70,
+						title : '职位名称'
+					},{
+						field : 'jobId',
+						width : 70,
+						title : '职位编号'
+					}, {
+						field : 'jobName',
+						width : 70,
+						title : '职位名称'
+					},{
+						field : 'jobId',
+						width : 70,
+						title : '职位编号'
+					}, {
+						field : 'jobName',
+						width : 70,
+						title : '职位名称'
+					},{
+						field : 'jobId',
+						width : 70,
+						title : '职位编号'
+					}, {
+						field : 'jobName',
+						width : 70,
+						title : '职位名称'
+					},{
+						field : 'jobId',
+						width : 70,
+						title : '职位编号'
+					}, {
+						field : 'jobName',
+						width : 70,
+						title : '职位名称'
+					}
 				] ],
 			});
 		}
