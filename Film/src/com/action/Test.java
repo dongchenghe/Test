@@ -9,6 +9,7 @@ public class Test {
 	public void foo(){
 		System.out.println("dp");
 	}
+
 	public void say() {
 		System.out.println("呵呵");
 	}
