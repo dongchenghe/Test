@@ -31,8 +31,7 @@
 				}						
 					$("#film_filmStorySort_sorts").combobox("loadData",blankoption);
 				},			
-			});
-		
+			});		
 	});
 </script>
 </head>
@@ -180,7 +179,6 @@
 		function check() {
 			$("#dg").datagrid({
 				pagination : true,
-				
 				onDblClickRow : updateData,
 				url : 'jobManagerAction!getJobs',
 				columns : [ [ //二维数组，2个中括号

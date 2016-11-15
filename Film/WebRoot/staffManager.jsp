@@ -31,9 +31,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<label>职工名：</label>
 		<input style="width:70px;" class="easyui-validatebox" id="ename" name="staff.userName"/>
 		<label>职工密码：</label>
-		<input style="width:90px;" class="easyui-passwordbox" id="emppwd"/ name="staff.pwd"> 
+		<input style="width:90px;" class="easyui-passwordbox" id="emppwd" name="staff.pwd"> 
 		<label>职工电话：</label>
-		<input style="width:80px;" class="easyui-validatebox" id="empphone"/ name="staff.phone">
+		<input style="width:80px;" class="easyui-validatebox" id="empphone" name="staff.phone">
 		<label>职位名：</label>
 		<input style="width:90px;" id="queryjobName" class="easyui-combobox" data-options="
 					        valueField:'jobId',  
