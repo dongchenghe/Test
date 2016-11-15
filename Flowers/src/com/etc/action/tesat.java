@@ -1,6 +1,7 @@
 package com.etc.action;
 
 public class tesat {
+
 	public void test(){
 		System.out.println("2314qarws");
 	}
@@ -8,6 +9,9 @@ public class tesat {
 	public void name() {
 		System.out.println();
 	}
+
+
+
 
 	public String getAa() {
 		return aa;
