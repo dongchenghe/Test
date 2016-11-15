@@ -5,6 +5,7 @@ public class tesat {
 	private String aa;
 	public void name() {
 		System.out.println();
+		System.out.println("132131");
 	}
 
 }
