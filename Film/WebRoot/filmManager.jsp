@@ -180,77 +180,66 @@
 		function check() {
 			$("#dg").datagrid({
 				pagination : true,
-				queryParams : {
-					'job.jobId' : $("#job_jobId").val(),
-					'job.jobName' : $("#job_jobName").val()
-				},
+				
 				onDblClickRow : updateData,
 				url : 'jobManagerAction!getJobs',
 				columns : [ [ //二维数组，2个中括号
 					{
-						field : 'jobId',
+						field : 'filmId',
 						width : 70,
-						title : '职位编号'
+						title : '电影编号'
 					}, {
-						field : 'jobName',
+						field : 'filmName',
 						width : 70,
-						title : '职位名称'
+						title : '电影名称'
 					},{
-						field : 'jobId',
+						field : 'totalTime',
 						width : 70,
-						title : '职位编号'
+						title : '总时长'
 					}, {
-						field : 'jobName',
+						field : 'filmSort',
 						width : 70,
-						title : '职位名称'
+						title : '放映类型'
 					},{
-						field : 'jobId',
+						field : 'filmStorySort。sorts',
 						width : 70,
-						title : '职位编号'
-					}, {
-						field : 'jobName',
-						width : 70,
-						title : '职位名称'
+						title : '剧情分类'
 					},{
-						field : 'jobId',
+						field : 'releaseTime',
 						width : 70,
-						title : '职位编号'
+						title : '上映时间'
 					}, {
-						field : 'jobName',
+						field : 'director',
 						width : 70,
-						title : '职位名称'
+						title : '导演'
 					},{
-						field : 'jobId',
+						field : 'scriptWriter',
 						width : 70,
-						title : '职位编号'
+						title : '编剧'
 					}, {
-						field : 'jobName',
+						field : 'actor',
 						width : 70,
-						title : '职位名称'
+						title : '演员'
 					},{
-						field : 'jobId',
+						field : 'country',
 						width : 70,
-						title : '职位编号'
+						title : '国家'
 					}, {
-						field : 'jobName',
+						field : 'filmCompany',
 						width : 70,
-						title : '职位名称'
+						title : '制片公司'
 					},{
-						field : 'jobId',
+						field : 'story',
 						width : 70,
-						title : '职位编号'
+						title : '故事情节'
 					}, {
-						field : 'jobName',
+						field : 'imgSrc',
 						width : 70,
-						title : '职位名称'
+						title : '封面路径'
 					},{
-						field : 'jobId',
+						field : 'filmScore',
 						width : 70,
-						title : '职位编号'
-					}, {
-						field : 'jobName',
-						width : 70,
-						title : '职位名称'
+						title : '评分'
 					}
 				] ],
 			});
